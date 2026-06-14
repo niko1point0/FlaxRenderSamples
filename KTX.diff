@@ -28,10 +28,10 @@ index a2e14aaf1..425734c91 100644
              {
                  // Skip checking
 diff --git a/Source/Engine/ContentImporters/AssetsImportingManager.cpp b/Source/Engine/ContentImporters/AssetsImportingManager.cpp
-index 696f43a9e..5bdcb7f08 100644
+index fb8d60771..a675cc1fc 100644
 --- a/Source/Engine/ContentImporters/AssetsImportingManager.cpp
 +++ b/Source/Engine/ContentImporters/AssetsImportingManager.cpp
-@@ -449,6 +449,7 @@ bool AssetsImportingManagerService::Init()
+@@ -457,6 +457,7 @@ bool AssetsImportingManagerService::Init()
          { TEXT("hdr"), ASSET_FILES_EXTENSION, ImportTexture::Import },
          { TEXT("raw"), ASSET_FILES_EXTENSION, ImportTexture::Import },
          { TEXT("exr"), ASSET_FILES_EXTENSION, ImportTexture::Import },

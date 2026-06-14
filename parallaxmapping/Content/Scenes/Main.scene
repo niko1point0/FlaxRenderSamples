@@ -1,0 +1,25 @@
+{
+	"ID": "9e335c9ee3104dad8d6d2c72ed8ffeab",
+	"TypeName": "FlaxEngine.SceneAsset",
+	"EngineBuild": 6910,
+	"Data": [
+		{
+			"ID": "9e335c9ee3104dad8d6d2c72ed8ffeab",
+			"TypeName": "FlaxEngine.Scene",
+			"Name": "Main"
+		},
+		{
+			"ID": "dbb14a71e46345b4978d6f7f5301784e",
+			"TypeName": "VulkanParallaxmappingRenderer",
+			"ParentID": "9e335c9ee3104dad8d6d2c72ed8ffeab",
+			"Name": "VulkanParallaxmappingRenderer",
+			"V": {}
+		},
+		{
+			"ID": "a96d276162e346aaa95e63907a6e0759",
+			"TypeName": "ExitOnEsc",
+			"ParentID": "9e335c9ee3104dad8d6d2c72ed8ffeab",
+			"V": {}
+		}
+	]
+}

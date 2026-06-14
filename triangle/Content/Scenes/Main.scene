@@ -1,0 +1,25 @@
+{
+	"ID": "b1c2d3e4f5a6478990ab1c2d3e4f5a60",
+	"TypeName": "FlaxEngine.SceneAsset",
+	"EngineBuild": 6910,
+	"Data": [
+		{
+			"ID": "b1c2d3e4f5a6478990ab1c2d3e4f5a60",
+			"TypeName": "FlaxEngine.Scene",
+			"Name": "Main"
+		},
+		{
+			"ID": "c1a2b3c4d5e6478990ab1c2d3e4f5a61",
+			"TypeName": "VulkanTriangleRenderer",
+			"ParentID": "b1c2d3e4f5a6478990ab1c2d3e4f5a60",
+			"Name": "VulkanTriangleRenderer",
+			"V": {}
+		},
+		{
+			"ID": "d1e2f3a4b5c6478990ab1c2d3e4f5a62",
+			"TypeName": "ExitOnEsc",
+			"ParentID": "b1c2d3e4f5a6478990ab1c2d3e4f5a60",
+			"V": {}
+		}
+	]
+}

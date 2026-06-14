@@ -1,0 +1,25 @@
+{
+	"ID": "9bd2ce32652d42e38439ce698f0d4ac3",
+	"TypeName": "FlaxEngine.SceneAsset",
+	"EngineBuild": 6910,
+	"Data": [
+		{
+			"ID": "9bd2ce32652d42e38439ce698f0d4ac3",
+			"TypeName": "FlaxEngine.Scene",
+			"Name": "Main"
+		},
+		{
+			"ID": "923713d206c74f45a5e296b2eaf00447",
+			"TypeName": "VulkanShadowmappingomniRenderer",
+			"ParentID": "9bd2ce32652d42e38439ce698f0d4ac3",
+			"Name": "VulkanShadowmappingomniRenderer",
+			"V": {}
+		},
+		{
+			"ID": "ce240a91bfa247dfa6d00e72bd6d17c4",
+			"TypeName": "ExitOnEsc",
+			"ParentID": "9bd2ce32652d42e38439ce698f0d4ac3",
+			"V": {}
+		}
+	]
+}

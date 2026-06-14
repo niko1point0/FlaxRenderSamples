@@ -1,0 +1,11 @@
+﻿{
+  "profiles": {
+    "Game": {
+      "commandName": "Executable",
+      "workingDirectory": "C:/Users/nproc/OneDrive/Desktop/Flax/FlaxSamples/SaschaPortedToFlax/examples/gears",
+      "executablePath": "C:/Users/nproc/OneDrive/Desktop/Flax/FlaxEngine/Binaries/Editor/Win64/$(FlaxConfiguration)/FlaxEditor.exe",
+      "commandLineArgs": "-project \"C:/Users/nproc/OneDrive/Desktop/Flax/FlaxSamples/SaschaPortedToFlax/examples/gears\"",
+      "nativeDebugging": false
+    }
+  }
+}

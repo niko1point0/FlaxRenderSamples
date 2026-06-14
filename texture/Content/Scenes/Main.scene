@@ -1,0 +1,25 @@
+{
+	"ID": "e2b3c4d5f6a7478990ab1c2d3e4f5a70",
+	"TypeName": "FlaxEngine.SceneAsset",
+	"EngineBuild": 6910,
+	"Data": [
+		{
+			"ID": "e2b3c4d5f6a7478990ab1c2d3e4f5a70",
+			"TypeName": "FlaxEngine.Scene",
+			"Name": "Main"
+		},
+		{
+			"ID": "f3c4d5e6a7b8478990ab1c2d3e4f5a71",
+			"TypeName": "VulkanTextureRenderer",
+			"ParentID": "e2b3c4d5f6a7478990ab1c2d3e4f5a70",
+			"Name": "VulkanTextureRenderer",
+			"V": {}
+		},
+		{
+			"ID": "a4d5e6f7b8c9478990ab1c2d3e4f5a72",
+			"TypeName": "ExitOnEsc",
+			"ParentID": "e2b3c4d5f6a7478990ab1c2d3e4f5a70",
+			"V": {}
+		}
+	]
+}

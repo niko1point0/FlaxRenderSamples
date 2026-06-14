@@ -13,7 +13,7 @@ A collection of classic real-time rendering samples — a spinning triangle, ani
 
 ## Sample Compatibility
 
-Every sample targets **Flax 1.13**. Some need a small engine patch applied on top of 1.13 (see [Applying a Patch](#applying-a-patch)).
+Every sample targets **Flax 1.13**. Some need a small engine patch applied on top of 1.13. The patches ship inside **`FlaxPatches.zip`** in this repository — see [Applying a Patch](#applying-a-patch).
 
 | Sample | Patch required | What it shows |
 |--------|----------------|---------------|
@@ -46,14 +46,17 @@ git clone -b 1.13 https://github.com/FlaxEngine/FlaxEngine.git
 
 ## Applying a Patch
 
-Some samples require an engine patch.
+Some samples require an engine patch. The patches are distributed as **`FlaxPatches.zip`** in this repository, which contains `KTX.diff` and `HWRT_D3D12_VK.diff`.
+
+> **Why a zip?** A `.diff` is byte-sensitive — Git apply fails if even the line endings change. When raw `.diff` files are committed to GitHub, Git's automatic line-ending normalization (and, for some files, LFS handling) rewrites them on checkout, so the copy you clone no longer matches the original and `git apply` rejects it. Packing them inside `FlaxPatches.zip` keeps the bytes exactly as authored, so the extracted files apply cleanly. **Unzip `FlaxPatches.zip` first — don't try to use any loose `.diff` from the repo tree.**
 
 > **Important:** these `.diff` files patch the **[FlaxEngine](https://github.com/FlaxEngine/FlaxEngine) repository (branch `1.13`)** — *not* this samples repository. Apply them inside your cloned engine source tree, then rebuild the engine.
 
-Copy the `.diff` you need into the root of your Flax 1.13 engine clone (or reference it by full path), apply it there, then rebuild the engine:
+Extract `FlaxPatches.zip`, copy the `.diff` you need into the root of your Flax 1.13 engine clone (or reference it by full path), apply it there, then rebuild the engine:
 
 ```bash
-# Run these from inside your FlaxEngine clone (the 1.13 branch), NOT from the samples repo.
+# 1. Unzip FlaxPatches.zip to get KTX.diff and HWRT_D3D12_VK.diff.
+# 2. Run these from inside your FlaxEngine clone (the 1.13 branch), NOT from the samples repo.
 
 # KTX texture support — needed for: texture, parallaxmapping
 git apply KTX.diff

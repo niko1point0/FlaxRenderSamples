@@ -28,13 +28,14 @@ Every sample targets **Flax 1.13**. Some need a small engine patch applied on to
 
 - **No patch** → runs on a stock Flax 1.13 build.
 - **`KTX.diff`** → adds KTX texture support: `texture`, `parallaxmapping`.
-- **`HWRT_D3D12_VK.diff`** → adds hardware ray tracing on DirectX 12 and Vulkan: `shadowmappingAddRT`, `shadowmappingomniAddRT`.
+- **`HWRT_D3D12_VK.diff`** → adds hardware ray tracing on DirectX 12 and Vulkan: `shadowmappingAddRT`, `shadowmappingomniAddRT`. Running these on **Vulkan** also needs a SPIR-V-enabled DXC — see [Ray Tracing on Vulkan: SPIR-V Shader Compiler](#ray-tracing-on-vulkan-spir-v-shader-compiler).
 
 ## Requirements
 
 - Windows x64
 - Flax Engine **1.13** (built from source — see below)
 - For the ray tracing samples: a GPU + driver supporting DirectX 12 or Vulkan hardware ray tracing
+- For the ray tracing samples on **Vulkan**: a SPIR-V-enabled DirectX Shader Compiler (see [Ray Tracing on Vulkan: SPIR-V Shader Compiler](#ray-tracing-on-vulkan-spir-v-shader-compiler))
 
 ## Getting Flax 1.13
 
@@ -66,6 +67,28 @@ git apply HWRT_D3D12_VK.diff
 ```
 
 > Apply only the patch(es) for the sample(s) you intend to run. The patches are independent.
+
+## Ray Tracing on Vulkan: SPIR-V Shader Compiler
+
+> Only needed for the ray tracing samples (`shadowmappingAddRT`, `shadowmappingomniAddRT`) **when running on Vulkan**. DirectX 12 works without this step.
+
+The ray tracing samples compile their inline ray-query shaders with the DirectX Shader Compiler (DXC). On Vulkan these shaders must be emitted as **SPIR-V**, but the `dxcompiler.dll` that ships with the Windows SDK is built **without** SPIR-V code generation. Using it produces:
+
+```
+Failed to compile 'Shadowmapping'. SPIR-V CodeGen not available. Please recompile with -DENABLE_SPIRV_CODEGEN=ON.
+```
+
+To fix this, swap in a SPIR-V-enabled build of DXC:
+
+1. Download the latest release from the official [DirectX Shader Compiler releases](https://github.com/microsoft/DirectXShaderCompiler/releases).
+2. From the downloaded package, open **`bin/x64`**.
+3. Copy **`dxcompiler.dll`** and **`dxil.dll`** into your engine's third-party binaries folder:
+
+```
+FlaxEngine\Source\Platforms\Windows\Binaries\ThirdParty\x64
+```
+
+Overwrite the existing files, then rebuild/relaunch the editor. DirectX 12 ray tracing is unaffected by this swap.
 
 ## Running a Sample
 

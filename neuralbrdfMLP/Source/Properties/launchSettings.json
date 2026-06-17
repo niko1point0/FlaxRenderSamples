@@ -1,0 +1,11 @@
+﻿{
+  "profiles": {
+    "Game": {
+      "commandName": "Executable",
+      "workingDirectory": "C:/Users/nproc/OneDrive/Desktop/Flax/FlaxRenderSamples/neuralbrdf",
+      "executablePath": "C:/Users/nproc/OneDrive/Desktop/Flax/FlaxEngine/Binaries/Editor/Win64/$(FlaxConfiguration)/FlaxEditor.exe",
+      "commandLineArgs": "-project \"C:/Users/nproc/OneDrive/Desktop/Flax/FlaxRenderSamples/neuralbrdf\"",
+      "nativeDebugging": false
+    }
+  }
+}

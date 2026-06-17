@@ -102,3 +102,41 @@ You can also **cook** the project to produce a standalone build.
 ## Debugging the Ray Tracing Samples
 
 The ray tracing demos (`shadowmappingAddRT`, `shadowmappingomniAddRT`) can only be GPU-debugged with **NVIDIA Nsight Graphics**. They will **not** work in RenderDoc.
+
+## Neural Rendering Samples (`neuralbrdfCV`, `neuralbrdfMLP`)
+
+Two new samples demonstrate **Neural Rendering** — AI-acceleration of graphics technology. To be clear, this is **NOT** any kind of "DLSS 5 AI slop": there is no upscaling, no frame generation, no hallucinated detail. It is simply AI taking a graphics effect you already like (here, the Disney BRDF) and finding a faster way to execute the same instructions. A small neural network is trained to approximate the analytic shader, then evaluated per-pixel at runtime.
+
+Both samples render the same sphere three ways side-by-side: **analytic ground truth** | **trained neural approximation** | **difference** (amplified error). Each pass is tagged in the **GPU Profiler** so you can compare costs directly.
+
+### `neuralbrdfMLP` — portable FP32
+
+Runs the neural network as plain **FP32** matrix-vector loops. It works on **any GPU and any driver**, with no special requirements — but it is **very slow**, because every pixel evaluates the whole multi-layer perceptron in scalar math.
+
+### `neuralbrdfCV` — NVIDIA Cooperative Vectors
+
+Runs the exact same network using **Cooperative Vectors** (NVIDIA Neural Shading), which dispatch the per-layer matrix-vector multiplies onto the tensor cores. Cooperative Vectors are very new and have strict requirements:
+
+- **NVIDIA driver 590+** on **RTX 2000-series or newer** hardware
+- **Windows Developer Mode** enabled
+- An **early preview build of the DXC shader compiler** (Shader Model 6.9+ / cooperative-vector support)
+
+See the Microsoft announcement for details: [Announcing Shader Model 6.10 Preview and AgilitySDK 720 Preview](https://devblogs.microsoft.com/directx/shader-model-6-10-agilitysdk-720-preview/).
+
+The `neuralbrdfCV` sample also requires **engine-side changes** that are not part of stock Flax. These are bundled as **`CoopVecGitPatch.zip`**, found in the **`neuralbrdfCV`** folder. This is intended for **engine developers** only — you must apply it to the Flax Engine source and rebuild the editor. Do **not** expect this to be broadly useful until **2027**, as it depends on preview drivers, a preview shader compiler, and experimental engine support.
+
+### Render test results
+
+Per-pass GPU time measured rendering the neural sphere:
+
+| Path | GPU time |
+| --- | --- |
+| Original analytic shader | **0.047 ms** |
+| Cooperative Vectors (`neuralbrdfCV`) | **0.150 ms** |
+| FP32 (`neuralbrdfMLP`) | **3.810 ms** |
+
+Cooperative Vectors are roughly **25x faster** than the portable FP32 path, bringing a per-pixel neural BRDF to within ~3x of the hand-written analytic shader.
+
+### Status: not ready to merge
+
+This feature is **not ready to be merged into Flax Engine**. It is very early on every front — driver support, shader-compiler support, and engine support are all in preview/experimental state. We will continue to research it as time goes on.

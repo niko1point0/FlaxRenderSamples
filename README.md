@@ -5,6 +5,22 @@
 
 A collection of classic real-time rendering samples — a spinning triangle, animated gears, omni/directional shadow mapping, and hardware ray-traced shadows — rebuilt as standalone Flax projects.
 
+## Table of Contents
+
+- [Objective](#objective)
+- [Sample Compatibility](#sample-compatibility)
+- [Requirements](#requirements)
+- [Getting Flax 1.13](#getting-flax-113)
+- [Applying a Patch](#applying-a-patch)
+- [Ray Tracing on Vulkan: SPIR-V Shader Compiler](#ray-tracing-on-vulkan-spir-v-shader-compiler)
+- [Running a Sample](#running-a-sample)
+- [Debugging the Ray Tracing Samples](#debugging-the-ray-tracing-samples)
+- [Neural Rendering Samples](#neural-rendering-samples-neuralbrdfcv-neuralbrdfmlp)
+  - [`neuralbrdfMLP` — portable FP32](#neuralbrdfmlp--portable-fp32)
+  - [`neuralbrdfCV` — NVIDIA Cooperative Vectors](#neuralbrdfcv--nvidia-cooperative-vectors)
+  - [Render test results](#render-test-results)
+  - [Status: not ready to merge](#status-not-ready-to-merge)
+
 ## Objective
 
 - **Learn the Flax graphics abstraction layer** by porting well-understood samples to it.

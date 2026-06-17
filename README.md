@@ -1,4 +1,4 @@
-# Sascha Willems' Vulkan Samples — Ported to Flax
+# FlaxRenderSamples - Flax Graphics API tutorials
 
 > **Credits to [Sascha Willems](https://github.com/SaschaWillems/vulkan) for writing the original Vulkan samples.**
 > This repository ports a selection of them to the [Flax Engine](https://flaxengine.com/) while keeping the original rendering logic (camera math, GLSL-equivalent shaders, glTF scenes) intact.
